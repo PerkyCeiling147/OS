@@ -1,0 +1,90 @@
+Temporary breakpoint 1 at 0x702100: file target/riscv/cpu_helper.c, line 1293.
+Temporary breakpoint 2 at 0x702100: file target/riscv/cpu_helper.c, line 1293.
+warning: Probes-based dynamic linker interface failed.
+Reverting to original interface.
+[New LWP 434]
+[New LWP 435]
+[Switching to LWP 435]
+
+Thread 3 "qemu-system-ris" hit Temporary breakpoint 1, riscv_cpu_tlb_fill (cs=0x5555568f15c0, address=2149580800, size=1, access_type=MMU_INST_FETCH, mmu_idx=1, probe=false, retaddr=0) at target/riscv/cpu_helper.c:1293
+warning: Source file is more recent than executable.
+1293	{
+
+[HOST] PHASE 1: before paging is enabled (bare mode)
+[HOST] vaddr=0x80200000 access_type=2 mmu_idx=1 satp=0x0
+#0  riscv_cpu_tlb_fill (cs=0x5555568f15c0, address=2149580800, size=1, access_type=MMU_INST_FETCH, mmu_idx=1, probe=false, retaddr=0) at target/riscv/cpu_helper.c:1293
+#1  0x0000555555dac610 in probe_access_internal (cpu=<optimized out>, addr=2149580800, fault_size=-1478499433, access_type=(MMU_DATA_STORE | MMU_INST_FETCH | unknown: 0x7ffc), mmu_idx=1, nonfault=204, phost=0x7fffb016fec0 <code_gen_buffer+1506963>, pfull=0x2, retaddr=93825012968544, check_mem_cbs=167) at accel/tcg/cputlb.c:1432
+#2  0x0000555555dac5c7 in probe_access_internal (cpu=0x7fffa7dfe400, addr=2149580800, fault_size=1449122432, access_type=(MMU_DATA_STORE | MMU_INST_FETCH | unknown: 0x7ffc), mmu_idx=32767, nonfault=151, phost=0x55555691ac60, pfull=0x255f908a7, retaddr=2, check_mem_cbs=16) at accel/tcg/cputlb.c:1431
+
+Thread 3 "qemu-system-ris" hit Temporary breakpoint 2, riscv_cpu_tlb_fill (cs=0x5555568f15c0, address=18446744072637935632, size=4, access_type=MMU_DATA_STORE, mmu_idx=1, probe=false, retaddr=140736146178381) at target/riscv/cpu_helper.c:1293
+1293	{
+
+[HOST] PHASE 2: TLB miss -> riscv_cpu_tlb_fill
+[HOST] vaddr=0xffffffffc0207010 size=4 access_type=1 mmu_idx=1 probe=0
+[HOST] satp = 0x8000000000080205
+#0  riscv_cpu_tlb_fill (cs=0x5555568f15c0, address=18446744072637935632, size=4, access_type=MMU_DATA_STORE, mmu_idx=1, probe=false, retaddr=140736146178381) at target/riscv/cpu_helper.c:1293
+#1  0x0000555555dab25f in tlb_fill (retaddr=4605929694118498304, mmu_idx=2, access_type=(MMU_DATA_STORE | MMU_INST_FETCH | unknown: 0xfffffffc), size=<optimized out>, addr=18446744072637935632, cpu=<optimized out>) at accel/tcg/cputlb.c:1315
+#2  mmu_lookup1 (cpu=<optimized out>, data=0x7fffa7dfdf20, mmu_idx=2, access_type=(MMU_DATA_STORE | MMU_INST_FETCH | unknown: 0xfffffffc), ra=4605929694118498304) at accel/tcg/cputlb.c:1713
+#3  0x0000555555dab207 in mmu_lookup1 (cpu=0x7fffa7dfde60, data=0x7fffa7dfdf20, mmu_idx=0, access_type=(MMU_DATA_STORE | MMU_INST_FETCH | unknown: 0x3feb8ca4), ra=93825000981959) at accel/tcg/cputlb.c:1711
+Temporary breakpoint 3 at 0x555555c5545d: file target/riscv/cpu_helper.c, line 970.
+Temporary breakpoint 4 at 0x555555c563f0: file target/riscv/cpu_helper.c, line 1404.
+Temporary breakpoint 5 at 0x555555daed30: file accel/tcg/cputlb.c, line 1115.
+
+Thread 3 "qemu-system-ris" hit Temporary breakpoint 3, get_physical_address (env=0x5555568f3d80, env@entry=0x7fffa7dfdcc8, physical=physical@entry=0x7fffa7dfddd0, ret_prot=<optimized out>, addr=addr@entry=18446744072637935632, fault_pte_addr=fault_pte_addr@entry=0x0, access_type=access_type@entry=0, mmu_idx=<optimized out>, first_stage=<optimized out>, two_stage=<optimized out>, is_debug=<optimized out>) at target/riscv/cpu_helper.c:970
+970	        if (res != MEMTX_OK) {
+
+[HOST] inside Sv39 page-table walk (after PTE load)
+idx = <optimized out>
+pmp_prot = <optimized out>
+pmp_ret = 0
+res = 0
+attrs = <optimized out>
+mode = <optimized out>
+use_background = <optimized out>
+ppn = <optimized out>
+napot_bits = 0
+napot_mask = <optimized out>
+base = <optimized out>
+levels = <optimized out>
+ptidxbits = <optimized out>
+ptesize = <optimized out>
+vm = <optimized out>
+widened = <optimized out>
+cs = <optimized out>
+va_bits = <optimized out>
+pbmte = <optimized out>
+adue = <optimized out>
+ptshift = <optimized out>
+pte = 536871119
+pte_addr = 2149605368
+i = <optimized out>
+prot = <optimized out>
+updated_pte = <optimized out>
+vpn = <optimized out>
+__func__ = "get_physical_address"
+[HOST] walk: i unavailable (value has been optimized out)
+[HOST] walk: idx unavailable (value has been optimized out)
+[HOST] walk: base unavailable (value has been optimized out)
+[HOST] walk: ptshift unavailable (value has been optimized out)
+[HOST] walk: pte_addr = 0x80205ff8
+[HOST] walk: pte = 0x200000cf
+[HOST] walk: ppn unavailable (value has been optimized out)
+
+Thread 3 "qemu-system-ris" hit Temporary breakpoint 4, riscv_cpu_tlb_fill (cs=0x5555568f15c0, address=18446744072637935632, size=<optimized out>, access_type=MMU_DATA_STORE, mmu_idx=1, probe=false, retaddr=140736146178381) at target/riscv/cpu_helper.c:1404
+1404	        tlb_set_page(cs, address & ~(tlb_size - 1), pa & ~(tlb_size - 1),
+
+[HOST] get_physical_address returned
+[HOST] translate: pa = 0x80207010
+[HOST] translate: prot = 7
+[HOST] translate: tlb_size unavailable (value has been optimized out)
+
+Thread 3 "qemu-system-ris" hit Temporary breakpoint 5, tlb_set_page_full (cpu=0x5555568f15c0, mmu_idx=1, addr=18446744072637935616, full=0x7fffa7dfdd30, full@entry=0x7fffa7dfdd00) at accel/tcg/cputlb.c:1115
+warning: Source file is more recent than executable.
+1115	{
+
+[HOST] TLB fill entry: tlb_set_page_full (registers, before prologue)
+[HOST] tlb_set_page_full: cpu=0x5555568f15c0 mmu_idx=1 vaddr=0xffffffffc0207000 full=0x7fffa7dfdd30
+[HOST] full: xlat_section=0x0 phys_addr=0x80207000 attrs=0x1 prot=7 lg_page_size=12
+#0  tlb_set_page_full (cpu=0x5555568f15c0, mmu_idx=1, addr=18446744072637935616, full=0x7fffa7dfdd30, full@entry=0x7fffa7dfdd00) at accel/tcg/cputlb.c:1115
+#1  0x0000555555daf97e in tlb_set_page_with_attrs (cpu=<optimized out>, addr=<optimized out>, paddr=<optimized out>, attrs=<optimized out>, prot=<optimized out>, mmu_idx=<optimized out>, size=13224204304385) at accel/tcg/cputlb.c:1290
+[Inferior 1 (process 431) killed]

@@ -1,0 +1,17 @@
+The target architecture is set to "riscv:rv64".
+0x0000000000001000 in ?? ()
+Temporary breakpoint 1 at 0xffffffffc0201078: file kern/mm/pmm.c, line 132.
+
+Temporary breakpoint 1, page_init () at kern/mm/pmm.c:132
+132	        p->property = 0;
+
+[GUEST] stopped before first store into pages[]
+[GUEST] pc=0xffffffffc0201078 satp=0x8000000000080205 sp=0xffffffffc0204fa0
+[GUEST] pages variable = 0xffffffffc0207000
+[GUEST] a5 store base = 0xffffffffc0207000
+=> 0xffffffffc0201078 <pmm_init+254>:	sw	zero,16(a5)
+[GUEST] PTE[2]   = 0x200000cf
+[GUEST] PTE[511] = 0x200000cf
+[GUEST] continue; expect QEMU host GDB to catch the store TLB miss
+../qemu-debug/guest.gdb:17: Error in sourced command file:
+Remote connection closed
